@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-alexa-notifyme",
-    "version": "0.1.0-beta.1",
+    "version": "0.1.0-beta.2",
     "description": "A Node-RED node to take control of your Alexa, by sending it your own notifications",
     "dependencies": {
         "request": "2.88.0"
