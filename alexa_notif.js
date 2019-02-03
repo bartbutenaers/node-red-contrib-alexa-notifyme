@@ -19,8 +19,9 @@ module.exports = function(RED) {
 
     function AlexaNotifyMeNode(config) {
         RED.nodes.createNode(this, config);
+        this.notification = config.notification;
+        
         var node = this;
-        var notification = config.notification;
 
         // Use the timeout specified in the settings.js file, or a default of 120 seconds
         if (RED.settings.httpRequestTimeout) { 
