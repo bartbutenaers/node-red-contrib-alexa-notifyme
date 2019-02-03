@@ -1,0 +1,56 @@
+<!--
+  Copyright 2019, Bart Butenaers
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<script type="text/x-red" data-template-name="alexa-notifyme">
+    <div class="form-row">
+        <label for="node-input-notification"><i class="fa fa-terminal"></i> Notification</label>
+        <input type="text" id="node-input-notification">
+    </div>
+    <div class="form-row">
+        <label for="node-input-accessCode"><i class="fa fa-lock"></i> Access code</label>
+        <input type="password" id="node-input-accessCode">
+    </div>
+    <br>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name"
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="alexa-notifyme">
+    <p>Node-RED node to take control of your Alexa, by sending it your own notifications.</p>
+    <p>See this <a target="_blank" href="http://www.thomptronics.com/notify-me">link</a> for detailed information.</p>
+    <p><strong>Notification:</strong><br/>
+    The notification that needs to be send to the Alexa device.  When empty, the notification needs to be specified inside the <code>msg.payload</code> of the input message.</p>
+    <p><strong>Access code:</strong><br/>
+    See on the above link how to get your own secure access code.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('alexa-notifyme',{
+        category: 'function',
+        color:"rgb(231, 231, 174)",
+        defaults: {
+            name: {value:""},
+            notification: {value:""}
+        },
+        credentials: {
+            accessCode: {type: "password", required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "alexa.png",
+        label: function() {
+            return this.name || this.notification || "Alexa Notify Me";
+        }
+    });
+</script>
