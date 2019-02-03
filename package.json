@@ -1,0 +1,28 @@
+{
+    "name": "node-red-contrib-alexa-notifyme",
+    "version": "0.1.0",
+    "description": "A Node-RED node to take control of your Alexa, by sending it your own notifications",
+    "dependencies": {
+        "request": "2.88.0"
+    },
+    "author": {
+        "name": "Bart Butenaers"
+    },
+    "license": "Apache-2.0",
+    "keywords": [
+        "node-red", "alexa", "notification", "notifyme"
+    ],
+    "bugs": {
+        "url": "https://github.com/bartbutenaers/node-red-contrib-alexa-notifyme/issues"
+    },
+    "homepage": "https://github.com/bartbutenaers/node-red-contrib-alexa-notifyme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bartbutenaers/node-red-contrib-alexa-notifyme.git"
+    },
+    "node-red": {
+        "nodes": {
+            "alexa-notifyme": "alexa_notif.js"
+        }
+    }
+}
