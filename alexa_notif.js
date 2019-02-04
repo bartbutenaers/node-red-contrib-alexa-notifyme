@@ -32,12 +32,48 @@ module.exports = function(RED) {
         }
 
         this.on("input",function(msg) {
-            var notification = node.notification || msg.payload;
-            
-            if (msg.payload && node.notification) {
-                node.warn("The msg.payload cannot override the notification in the node config.");
+            var notification = node.notification;  // start by grabbing the node's notification content
+            var errmsg = "";
+
+			var msgType = typeof msg.payload;
+			
+ 			switch(msgType) {
+ 				case "boolean" :  
+ 					// if msg.payload is a BOOLEAN make it a string
+ 					msg.payload = (msg.payload) ? "True":"False";
+ 	                notification = msg.payload;
+ 					break;
+ 				case "number"  :  
+ 					// if msg.payload is a NUMBER make it a string
+ 	                notification =  msg.payload;
+ 					break;
+ 				case "string"  :  
+ 					// if msg.payload is a string use it unless it is empty 
+ 					// then use the node's notification
+ 					if (msg.payload == ""){
+        		    	msg.payload = node.notification;
+ 		           		notification = msg.payload;
+        		    } else {
+ 		           		notification = msg.payload;
+        		    }
+ 					break;
+ 				case "object":
+					// OBJECTs are not allowed
+     				errmsg = "JSON and Buffers not allowed";
+     				break;
+   				default: 
+     				errmsg = "No matching TYPEOF";
+ 			}
+
+           
+            if (!errmsg) {
+                node.status({});
+            } else {
+                node.warn(RED._(errmsg));
+                node.status({fill:"red",shape:"ring",text: errmsg});
+                return;
             }
-            
+
             if (!notification) {
                 node.warn(RED._("No notification has been specified (in node config or msg.payload"));
                 node.status({fill:"red",shape:"ring",text:"no notification"});
