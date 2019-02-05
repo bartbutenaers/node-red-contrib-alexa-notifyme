@@ -42,7 +42,7 @@ module.exports = function(RED) {
        return;
     }
       // if no preset node notification value, look at msg.payload
-      if (notification == "") {      
+      if (notification == "" && msg.payload) {      
         var errmsg = "";
         var msgType = typeof msg.payload;      
 
