@@ -1,5 +1,6 @@
 # node-red-contrib-alexa-notification
-Node-RED node to take control of your Alexa, by sending it your own notifications
+Node-RED node to take control of your Alexa using the ```Notify Me``` skill, by sending it your own notifications.
+NOTE: ```Notify Me``` is only available in the countries that allow English-speaking skills.
 
 ## Install
 Run the following npm command in your Node-RED user directory (typically ~/.node-red):
