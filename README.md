@@ -25,7 +25,7 @@ If you leave the 'notification' option empty in the node, then the contents of `
 When empty, the notification needs to be specified in ```msg.payload``` of the input message.
 
 ### Access code
-```Access Code``` is ```required``` for communications with Alexa. See this <a target="_blank" href="http://www.thomptronics.com/notify-me">link</a> for detailed information how to get your own private access code.</p>
+```Access Code``` is ```required``` for communications with Alexa. See this <a target="_blank" href="https://www.thomptronics.com/about/notify-me">link</a> for detailed information how to get your own private access code.</p>
 
 ## Node Usage
 The following flow can be used to test all the possible testcases. Make sure to read the comments because you will have to insert your Access Code into two of the node's instances and leave it out of the other two.
