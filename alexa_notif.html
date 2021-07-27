@@ -32,8 +32,8 @@
     <p><strong>Notification:</strong><br/>
     The notification that needs to be send to the Alexa device.  When empty, the notification needs to be specified inside the <code>msg.payload</code> of the input message.</p>
     <p>The node will accept strings, timestamps, numbers and booleans. JSON and Buffers are not allowed.</p>
-    <p><strong>Access code (REQUIRED):</strong><br/>
-    See the above link how to get your own secure access code.</p>
+    <p><strong>Access code:</strong><br/>
+    See the above link how to get your own secure access code.  This code is REQUIRED: when not specified in the config screen, it should be supplied in the input message as <code>msg.access_code</code>.</p>
 </script>
 
 <script type="text/javascript">
@@ -45,7 +45,7 @@
             notification: {value:""}
         },
         credentials: {
-            accessCode: {type: "password", required: true}
+            accessCode: {type: "password", required: false}
         },
         inputs:1,
         outputs:1,
