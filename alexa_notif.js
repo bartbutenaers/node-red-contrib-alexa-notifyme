@@ -36,8 +36,8 @@ module.exports = function(RED) {
       var notification = node.notification;  
       
     // see if there is an Access code - if not bug out with an error message    
-    if (!node.credentials.accessCode) {
-      node.warn(RED._("No Access Code has been specified"));
+    if (!node.credentials.accessCode && !msg.access_code) {
+       node.warn(RED._("No Access Code has been specified (in config screen or msg.access_code)"));
        node.status({fill:"red",shape:"ring",text:"no Access Code"});
        return;
     }
@@ -100,7 +100,7 @@ module.exports = function(RED) {
       // Setup the URL parameters
       opts.body = JSON.stringify({
         "notification": notification,
-        "accessCode": node.credentials.accessCode
+        "accessCode": node.credentials.accessCode || msg.access_code
       });
 
       opts.headers = {};
